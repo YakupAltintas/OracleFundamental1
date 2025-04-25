@@ -1,0 +1,22 @@
+sqlplus / as sysdba 			    --->>> veritabanına girdik
+connect kullanici_adi/sifre  		    --->>>bağlantı yaptık
+
+CREATE USER kullanı_adı IDENTIFIED BY şifre --->>> Kullanıcı adı ve şifre tanımladık
+ 2 DEFAULT TABLESPACE USERS 		    --->>> 
+ 3 TEMPORARY TABLESPACE TEMP		    --->>>
+ 4 PASSWORD EXPIRE			    --->>> İlk girişten sonra şifresini değiştirsin
+ 5 ACCOUNT LOCK/UNLOCK			    --->>> Hesabı kitle/Hesabın kitleme
+ 6 ;                                        --->>> Komutu çalıştır demek
+
+
+
+GRANT CONNECT, RESOURCE TO yakup; 	    --->>>yakup kullanıcısına bağlantı ve kaynak kullanımı yetkisi verdik
+
+GRANT UNLIMITED TABLESPACE TO yakup;	    --->>>yakup kullanıcısı insert into kullanabilir.
+
+REVOKE CONNECT FROM yakup;		    --->>>yakup kullanıcısının vt bağlantısını kaldırdık
+
+DROP USER yakup CASCADE			    --->>>yakup kullanıcısını oluşturduğu ne varsa hepsiyle beraber sildik. nesneleriyle beraber silmeyi CASCADE komutu sayesinde yaptık
+
+
+	
