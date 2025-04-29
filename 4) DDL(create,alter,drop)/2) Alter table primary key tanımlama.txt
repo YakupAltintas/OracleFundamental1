@@ -1,0 +1,9 @@
+->REGIONS tablosunun REGION_ID kolonunu PRIMARY KEY yaptık
+ALTER TABLE REGIONS ADD(
+CONSTRAINT reg_id_pk PRIMARY KEY(REGION_ID)
+);
+
+->COUNTRIES tablosundaki REGION_ID kısmıyla REGIONS tablosundaki REGION_ID kısmını bağlamış olduk.
+ALTER TABLE COUNTRIES ADD(
+CONSTRAINT country_region_fk FOREIGN KEY(REGION_ID) REFERENCES REGIONS(REGION_ID)
+);

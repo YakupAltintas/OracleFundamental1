@@ -1,0 +1,44 @@
+->Klasik bir tablo oluşturduk.
+	create table MUSTERILER(
+	MUSTERI_ID NUMBER(10),
+	CADDE VARCHAR2(50),
+	SEHIR VARCHAR2(50),
+	ULKE_KODU VARCHAR2(3),
+	POSTA_KODU VARCHAR2(5));
+
+-> bu tabloyu bir nesne üretip onunla yapalım.
+	->nesnemizi ürettik
+	CREATE TYPE ADRES_T AS OBJECT(
+	CADDE VARCHAR2(50),
+	SEHIR VARCHAR2(50),
+	ULKE_KODU VARCHAR2(3),
+	POSTA_KODU VARCHAR2(5));
+
+	CREATE TYPE adres_tab IS TABLE OF ADRES_T;
+
+	->tablomuzu ürettiğimiz nesnemiz ile oluşturduk.
+	CREATE TABLE MUSTERILER(
+	MUSTERI_ID NUMBER(10),
+	ADRES adres_tab)
+	NESTED TABLE ADRES STORE AS MUSTERI_ADRES;
+
+-> Tabloya müşteri ekleme
+	->Bir müşterinin birden fazla adresi olabilir o yüzden istediğimiz kadar adres kısmı ekleyebiliriz.
+	INSERT INTO MUSTERILER VALUES (2,
+	ADRES_TAB(
+	ADRES_T('maraş cad','van','TR','65400'),
+	ADRES_T('kızılay cad','istanbul','TR','34600')));
+
+->tabloyu listeleme
+	->Tablonun listelemesi normal tablolara göre farklıdır
+	select M.MUSTERI_ID,A.* from MUSTERILER M ,table(ADRES) A
+
+
+
+
+
+
+
+
+
+
