@@ -1,0 +1,5 @@
+sqlplus' girdikten sonra
+
+1. yol -> @dosya_yolu
+2. yol -> start dosya_yolu
+

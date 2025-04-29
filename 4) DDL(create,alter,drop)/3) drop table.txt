@@ -1,0 +1,5 @@
+--Tabloyu bağlantılarıyla beraber siler.Örneğin foreign key falan varsa silinir.
+DROP TABLE REGIONS CASCADE CONSTRAINTS;
+
+-- YAKUP kullanıcısını tablolarıyla beraber siler
+DROP USER YAKUP CASCADE
